@@ -14,7 +14,7 @@ function App() {
   const [ username, setUsername ] = useState(() => {
     return new URLSearchParams(window.location.search).get("username") || ""
   })
-  const [ users, setUsers ] = useState([])
+  const [ users, setUsers ] = useState([]) // to show the users in a list format
 
   const ydoc = useMemo(() => new Y.Doc(), [])
   //ydoc -> kind of a data structur YJS uses to store everything(documentations, code) made at the frontend.
@@ -40,10 +40,7 @@ function App() {
   const handleJoin = (e) => {
     e.preventDefault()
     setUsername(e.target.username.value)
-    window.history.pushState({}, "", "?username=" + e.target.username.value)
-
-
-
+    window.history.pushState({}, "", "?username=" + e.target.username.value) // to save the state even if we reload the page.
   }
 
   useEffect(() => {
@@ -57,8 +54,9 @@ function App() {
         autoConnect: true,
       })
 
-      provider.awareness.setLocalStateField("user", { username })
 
+    // Awareness -> handels all the users like how many users are there, how many are gone, etc
+      provider.awareness.setLocalStateField("user", { username })
 
       const states = Array.from(provider.awareness.getStates().values())
 
