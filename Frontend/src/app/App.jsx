@@ -19,7 +19,9 @@ function App() {
   const ydoc = useMemo(() => new Y.Doc(), [])
   //ydoc -> kind of a data structur YJS uses to store everything(documentations, code) made at the frontend.
   //        can store data of multiple files in the form of key-value pairs.
-  const yText = useMemo(() => ydoc.getText("monaco"), [ ydoc ])
+  // YJS fir isi data ko check/compare krta h for changes and jo bhi Delta(result/changes) nikalta h usko vo server pr bhej deta h.
+  // and then the server broadcasts the Delta to all the other users to reflect the chanegs made by one user.
+  const yText = useMemo(() => ydoc.getText("monaco"), [ ydoc ]) // to get data from a single file
 
 
   const handleMount = (editor) => {
@@ -50,6 +52,7 @@ function App() {
 
     if (username) {
 
+      // SocketIOProvider -> TO build the connection between User and Server. V.IMP 
       const provider = new SocketIOProvider("/", "monaco", ydoc, {
         autoConnect: true,
       })
