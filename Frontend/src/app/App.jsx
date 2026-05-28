@@ -1,6 +1,9 @@
 import "./App.css"
 import { Editor } from "@monaco-editor/react"
-import { MonacoBinding } from "y-monaco"
+import { MonacoBinding } from "y-monaco" 
+// MonacoBinding :-> to connect YJS with Monaco Editor
+// then whatever changes we make in the editor will be broradcasted to the other users too with the help of server
+  
 import { useRef, useMemo, useState, useEffect } from "react"
 import * as Y from "yjs"
 import { SocketIOProvider } from "y-socket.io"
@@ -14,6 +17,8 @@ function App() {
   const [ users, setUsers ] = useState([])
 
   const ydoc = useMemo(() => new Y.Doc(), [])
+  //ydoc -> kind of a data structur YJS uses to store everything(documentations, code) made at the frontend.
+  //        can store data of multiple files in the form of key-value pairs.
   const yText = useMemo(() => ydoc.getText("monaco"), [ ydoc ])
 
 

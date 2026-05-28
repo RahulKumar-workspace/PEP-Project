@@ -12,6 +12,7 @@ app.use(express.static("public"))
 
 const httpServer = createServer(app)
 
+// setting up socketio server
 const io = new Server(httpServer, {
     cors: {
         origin: "*",
@@ -19,11 +20,14 @@ const io = new Server(httpServer, {
     }
 })
 
-
+//inatializing
 const ySocketIO = new YSocketIO(io)
 ySocketIO.initialize()
 
+// ye dono krne ke baad server side me ySocket ka setup complete ho jata h
 
+
+// Health Check Route -> does not return anything. bs ye batate h ki server is working or not
 app.get('/health', (req, res) => {
     res.status(200).json({
         message: "ok",
