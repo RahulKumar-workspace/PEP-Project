@@ -7,8 +7,16 @@ import { YSocketIO } from "y-socket.io/dist/server"
 // This lets both sides push data back and forth to each other anytime without waiting for a page refresh.
 
 const app = express()
-app.use(express.static("public"))
-
+app.use(express.static("public")) //it means ki 'public' folder ke ander job bhi content rhega, backend server will start serving that too.
+// or public folder contains all the content from /frontend/dist folder
+// -> with this when we call for port 3000(backend), we'll be able to access port 5173(frontend) too, without explictly doing 'npm run dev' in 'frontend' folder.
+/*
+STEPS:
+    - FRONTEND -> Build[num run build] -> creates a 'dist' folder[html,css,javascript]
+    - copy the dist folder content in /backend/public/ folder
+    - use apt.use(express.static("public"))
+    - run backend server
+*/
 
 const httpServer = createServer(app)
 
