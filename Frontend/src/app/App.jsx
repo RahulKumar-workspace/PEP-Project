@@ -112,7 +112,7 @@ function App() {
       className="h-screen w-full bg-gray-950 flex gap-4 p-4"
     >
       <aside
-        className="h-full w-1/4 bg-amber-50 rounded-lg "
+        className="h-full w-1/4 bg-amber-100 rounded-lg "
       >
         <h2 className="text-2xl font-bold p-4 border-b border-gray-300">Users</h2>
         <ul className="p-4">
