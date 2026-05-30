@@ -6,9 +6,9 @@ COPY ./Frontend /app
 WORKDIR /app
 
 RUN npm install
-# to build the 'dist' folder
 
 RUN npm run build
+# to build the 'dist' folder
 
 #Backend
 FROM node:20-alpine
