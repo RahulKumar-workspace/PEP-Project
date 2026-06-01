@@ -34,9 +34,6 @@ function App() {
     )
   }
 
-
-
-
   const handleJoin = (e) => {
     e.preventDefault()
     setUsername(e.target.username.value)
